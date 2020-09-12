@@ -43,11 +43,14 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
+#include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+ 	{ "[@]",      spiral },
+ 	{ "[\\]",      dwindle },
 };
 
 /* key definitions */
@@ -67,6 +70,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
+<<<<<<< ours
 	/* type(Release/Press)     modifier                     key        function        argument */
 	{ KeyPress, MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ KeyPress, MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
@@ -83,6 +87,8 @@ static Key keys[] = {
 	{ KeyPress, MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ KeyPress, MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ KeyPress, MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ KeyPress, MODKEY,                       XK_r,      setlayout,      {.v = &layouts[3]} },
+	{ KeyPress, MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[4]} },
 	{ KeyPress, MODKEY,                       XK_space,  setlayout,      {0} },
 	{ KeyPress, MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ KeyPress, MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -94,7 +100,7 @@ static Key keys[] = {
 	{ KeyPress, MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ KeyPress, MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
 	{ KeyPress, MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
-	TAGKEYS(                        XK_1,                          0)
+	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
