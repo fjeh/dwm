@@ -50,7 +50,9 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
  	{ "[@]",      spiral },
- 	{ "[\\]",      dwindle },
+ 	{ "[\\]",     dwindle },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
 };
 
 /* key definitions */
@@ -70,7 +72,6 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
-<<<<<<< ours
 	/* type(Release/Press)     modifier                     key        function        argument */
 	{ KeyPress, MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ KeyPress, MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
@@ -89,6 +90,8 @@ static Key keys[] = {
 	{ KeyPress, MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ KeyPress, MODKEY,                       XK_r,      setlayout,      {.v = &layouts[3]} },
 	{ KeyPress, MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[4]} },
+	{ KeyPress, MODKEY,                       XK_u,      setlayout,      {.v = &layouts[5]} },
+	{ KeyPress, MODKEY,                       XK_o,      setlayout,      {.v = &layouts[6]} },
 	{ KeyPress, MODKEY,                       XK_space,  setlayout,      {0} },
 	{ KeyPress, MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ KeyPress, MODKEY,                       XK_0,      view,           {.ui = ~0 } },
