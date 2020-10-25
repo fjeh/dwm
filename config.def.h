@@ -31,6 +31,21 @@ static const char *const autostart[] = {
 static const char *tags[] = { "", "","", "", "", "", "", "", "" };
 static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
+/* scratchpads */
+typedef struct {
+	const char *name;
+	const void *cmd;
+} Sp;
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
+//const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
+//const char *spcmd3[] = {"keepassxc", NULL };
+static Sp scratchpads[] = {
+	/* name          cmd  */
+	{"spterm",      spcmd1},
+        //{"spranger",    spcmd2},
+	//{"keepassxc",   spcmd3},
+};
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -39,6 +54,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ NULL,       "spterm",	  NULL,	      SPTAG(0),	    1,	         -1 },
+	{ NULL,       "spfm",     NULL,		SPTAG(1),		1,			 -1 },
 };
 
 /* layout(s) */
@@ -111,6 +128,9 @@ static Key keys[] = {
 	{ KeyPress, MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
 	{ KeyPress, MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	{ KeyPress, MODKEY,                       XK_n,      togglealttag,   {0} },
+	{ KeyPress, MODKEY,                       XK_y,      togglescratch,  {.ui = 0 } },
+	//{ KeyPress, MODKEY,                       XK_a,	     togglescratch,  {.ui = 1 } },
+	//{ KeyPress, MODKEY,            	    XK_x,	     togglescratch,  {.ui = 2 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
