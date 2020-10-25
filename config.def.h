@@ -106,6 +106,7 @@ static Key keys[] = {
 	{ KeyPress, MODKEY,                       XK_Return, zoom,           {0} },
 	{ KeyPress, MODKEY,                       XK_Tab,    view,           {0} },
 	{ KeyPress, MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ KeyPress, MODKEY|ShiftMask,             XK_x,      killunsel,      {0} },
 	{ KeyPress, MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ KeyPress, MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ KeyPress, MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -128,7 +129,7 @@ static Key keys[] = {
 	{ KeyPress, MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
 	{ KeyPress, MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	{ KeyPress, MODKEY,                       XK_n,      togglealttag,   {0} },
-	{ KeyPress, MODKEY,                       XK_y,      togglescratch,  {.ui = 0 } },
+	{ KeyPress, MODKEY,                       XK_s,      togglescratch,  {.ui = 0 } },
 	//{ KeyPress, MODKEY,                       XK_a,	     togglescratch,  {.ui = 1 } },
 	//{ KeyPress, MODKEY,            	    XK_x,	     togglescratch,  {.ui = 2 } },
 	TAGKEYS(                        XK_1,                      0)
