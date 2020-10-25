@@ -6,7 +6,9 @@ static const int gappx     = 5;                 /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
+static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+//static const char *fonts[]          = { "monospace:size=10" };
+static const char *fonts[]          = { "Hack Nerd Font:size=12" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -26,7 +28,8 @@ static const char *const autostart[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "","", "", "", "", "", "", "" };
+static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -90,7 +93,7 @@ static Key keys[] = {
 	{ KeyPress, MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ KeyPress, MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ KeyPress, MODKEY,                       XK_r,      setlayout,      {.v = &layouts[3]} },
-	{ KeyPress, MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[4]} },
+	{ KeyPress, MODKEY|ControlMask,           XK_r,      setlayout,      {.v = &layouts[4]} },
 	{ KeyPress, MODKEY,                       XK_u,      setlayout,      {.v = &layouts[5]} },
 	{ KeyPress, MODKEY,                       XK_o,      setlayout,      {.v = &layouts[6]} },
 	{ KeyPress, MODKEY|ControlMask,		  XK_comma,  cyclelayout,    {.i = -1 } },
@@ -107,6 +110,7 @@ static Key keys[] = {
 	{ KeyPress, MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ KeyPress, MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
 	{ KeyPress, MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	{ KeyPress, MODKEY,                       XK_n,      togglealttag,   {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
